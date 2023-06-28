@@ -12,6 +12,11 @@ public class ItunesService {
 
     ItunesMapper itunesMapper;
 
+    public ItunesService(ItunesProxy itunesClient, ItunesMapper itunesMapper) {
+        ItunesClient = itunesClient;
+        this.itunesMapper = itunesMapper;
+    }
+
     public void fetchShawnMendesSongs() {
     String json = ItunesClient.makeRequest("shawnmendes", 4);
         if(json != null){

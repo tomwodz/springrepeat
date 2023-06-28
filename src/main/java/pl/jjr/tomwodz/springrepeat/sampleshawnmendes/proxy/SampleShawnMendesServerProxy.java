@@ -3,11 +3,16 @@ package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy;
 import org.springframework.stereotype.Component;
 import pl.jjr.tomwodz.springrepeat.myresttemplate.RestTemplate;
 
+@Component
 public class SampleShawnMendesServerProxy {
 
-    RestTemplate restTemplate;
+    private  final RestTemplate restTemplate;
 
-  /*  @Value("${sample-shawn-mendes-server.service.url}")
+    public SampleShawnMendesServerProxy(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    /*  @Value("${sample-shawn-mendes-server.service.url}")
     String url;
 
     @Value("${sample-shawn-mendes-server.service.port}")

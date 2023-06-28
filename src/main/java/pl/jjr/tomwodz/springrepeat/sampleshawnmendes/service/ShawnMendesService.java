@@ -1,9 +1,10 @@
 package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.service;
 
+import org.springframework.stereotype.Service;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy.SampleShawnMendesServerProxy;
 
-//@Service
+@Service
 public class ShawnMendesService {
 
 
