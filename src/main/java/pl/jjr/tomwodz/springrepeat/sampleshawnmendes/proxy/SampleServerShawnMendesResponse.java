@@ -1,4 +1,4 @@
-package pl.jjr.tomwodz.springrepeat.proxy;
+package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy;
 
 import java.util.List;
 

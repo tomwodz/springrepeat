@@ -1,9 +1,8 @@
-package pl.jjr.tomwodz.springrepeat.proxy;
+package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy;
 
 import org.springframework.stereotype.Component;
 import pl.jjr.tomwodz.springrepeat.myresttemplate.RestTemplate;
 
-@Component
 public class SampleShawnMendesServerProxy {
 
     RestTemplate restTemplate;
@@ -15,6 +14,7 @@ public class SampleShawnMendesServerProxy {
     int port;*/
 
     public String makePostRequest() {
+        System.out.println("Tutaj");
        /* UriComponentsBuilder builder = UriComponentsBuilder
                 .newInstance()
                 .scheme("http")
@@ -39,7 +39,7 @@ public class SampleShawnMendesServerProxy {
             System.out.println(exception.getMessage());
         }
         return null;*/
-        return "SampleShawnMendesServerProxy";
+        return "SampleShawnMendesServerProxy 1";
     }
 
     public String makeGetRequest() {
@@ -62,7 +62,7 @@ public class SampleShawnMendesServerProxy {
             System.out.println(exception.getMessage());
         }
         return null;*/
-        return "SampleShawnMendesServerProxy";
+        return "SampleShawnMendesServerProxy 2";
     }
 
     public String makeDeleteRequest(String id) {
@@ -87,6 +87,6 @@ public class SampleShawnMendesServerProxy {
             System.out.println(exception.getMessage());
         }
         return null;*/
-        return "SampleShawnMendesServerProxy";
+        return "SampleShawnMendesServerProxy 3";
     }
 }

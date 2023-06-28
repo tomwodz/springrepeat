@@ -24,6 +24,8 @@ public class ResttemplateApplication {
         singletonNames.forEach(
                 System.out::println
         );
+
+        ShawnMendesService bean = annotationConfigApplicationContext.getBean(ShawnMendesService.class);
     }
 
 }
