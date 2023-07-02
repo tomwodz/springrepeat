@@ -18,7 +18,7 @@ public class ItunesService {
     }
 
     public void fetchShawnMendesSongs() {
-    String json = ItunesClient.makeRequest("shawnmendes", 4);
+    String json = ItunesClient.makeGetRequest("shawnmendes", 4);
         if(json != null){
         ItunesResponse shawnMendesResponse = itunesMapper.mapJsonToItunesResponse(json);
         System.out.println(shawnMendesResponse);

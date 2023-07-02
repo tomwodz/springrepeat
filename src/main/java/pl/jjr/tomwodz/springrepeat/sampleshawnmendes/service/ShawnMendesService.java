@@ -9,7 +9,7 @@ public class ShawnMendesService {
 
 
     private final SampleShawnMendesServerProxy sampleShawnMendesServerClient;
-    private  final ShawnMendesServiceMapper shawnMendesServiceMapper;
+    private final ShawnMendesServiceMapper shawnMendesServiceMapper;
     public ShawnMendesService(SampleShawnMendesServerProxy sampleShawnMendesServerClient, ShawnMendesServiceMapper shawnMendesServiceMapper) {
         this.sampleShawnMendesServerClient = sampleShawnMendesServerClient;
         this.shawnMendesServiceMapper = shawnMendesServiceMapper;

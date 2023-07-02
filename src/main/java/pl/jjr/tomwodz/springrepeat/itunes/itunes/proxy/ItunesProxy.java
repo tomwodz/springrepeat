@@ -1,32 +1,38 @@
 package pl.jjr.tomwodz.springrepeat.itunes.itunes.proxy;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import pl.jjr.tomwodz.springrepeat.myresttemplate.RestTemplate;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestClientResponseException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class ItunesProxy {
 
-    RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-   /* @Value("${itunes.service.url}")
+    @Value("${itunes.service.url}")
     String url;
 
     @Value("${itunes.service.port}")
-    String port;*/
+    String port;
 
     public  ItunesProxy(RestTemplate restTemplate){
         this.restTemplate =restTemplate;
     }
 
-    public String makeRequest(String term, Integer limit) {
-/*        UriComponentsBuilder builder = UriComponentsBuilder
+    public String makeGetRequest(String term, Integer limit) {
+        UriComponentsBuilder builder = UriComponentsBuilder
                 .newInstance()
                 .scheme("https")
                 .host(url)
                 .port(port)
                 .path("/search")
                 .queryParam("term", "shawnMendes")
-                .queryParam("limit", 1);
+                .queryParam("limit", limit);
         try {
             ResponseEntity<String> response = restTemplate.exchange(
                     builder.build().toUri(),
@@ -39,8 +45,7 @@ public class ItunesProxy {
         } catch (RestClientException exception) {
             System.out.println(exception.getMessage());
         }
-        return null;*/
-        return "ItunesProxy";
+        return null;
     }
 
 

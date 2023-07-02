@@ -1,26 +1,33 @@
 package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import pl.jjr.tomwodz.springrepeat.myresttemplate.RestTemplate;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestClientResponseException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class SampleShawnMendesServerProxy {
 
-    private  final RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     public SampleShawnMendesServerProxy(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    /*  @Value("${sample-shawn-mendes-server.service.url}")
+      @Value("${sample-shawn-mendes-server.service.url}")
     String url;
 
     @Value("${sample-shawn-mendes-server.service.port}")
-    int port;*/
+    int port;
 
     public String makePostRequest() {
-        System.out.println("Tutaj");
-       /* UriComponentsBuilder builder = UriComponentsBuilder
+        UriComponentsBuilder builder = UriComponentsBuilder
                 .newInstance()
                 .scheme("http")
                 .host(url)
@@ -43,12 +50,11 @@ public class SampleShawnMendesServerProxy {
         } catch (RestClientException exception) {
             System.out.println(exception.getMessage());
         }
-        return null;*/
-        return "SampleShawnMendesServerProxy 1";
+        return null;
     }
 
     public String makeGetRequest() {
-      /*  UriComponentsBuilder builder = UriComponentsBuilder
+        UriComponentsBuilder builder = UriComponentsBuilder
                 .newInstance()
                 .scheme("http")
                 .host(url)
@@ -66,19 +72,17 @@ public class SampleShawnMendesServerProxy {
         } catch (RestClientException exception) {
             System.out.println(exception.getMessage());
         }
-        return null;*/
-        return "SampleShawnMendesServerProxy 2";
+        return null;
     }
 
     public String makeDeleteRequest(String id) {
-       /* UriComponentsBuilder builder = UriComponentsBuilder
+        UriComponentsBuilder builder = UriComponentsBuilder
                 .newInstance()
                 .scheme("http")
                 .host(url)
                 .port(port)
                 .path("/shawn/songs/")
                  .path(id);
-        //queryParam("iD",id);
         try {
             ResponseEntity<String> response = restTemplate.exchange(
                     builder.build().toUri(),
@@ -91,7 +95,6 @@ public class SampleShawnMendesServerProxy {
         } catch (RestClientException exception) {
             System.out.println(exception.getMessage());
         }
-        return null;*/
-        return "SampleShawnMendesServerProxy 3";
+        return null;
     }
 }
