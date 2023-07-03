@@ -35,7 +35,7 @@ public class SampleShawnMendesServerProxy {
                 .path("/shawn/songs");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("requestId", "test");
-        SampleShawnMendesRequest requestBody = new SampleShawnMendesRequest("test test test");
+        SampleShawnMendesRequest requestBody = new SampleShawnMendesRequest("Piosenka 1");
         HttpEntity<SampleShawnMendesRequest> httpEntity = new HttpEntity<>(requestBody, httpHeaders);
 
         try {

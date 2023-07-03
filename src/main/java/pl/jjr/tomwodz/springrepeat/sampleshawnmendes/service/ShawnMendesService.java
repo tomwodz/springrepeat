@@ -1,5 +1,6 @@
 package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Service;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy.SampleShawnMendesServerProxy;
@@ -15,11 +16,10 @@ public class ShawnMendesService {
         this.shawnMendesServiceMapper = shawnMendesServiceMapper;
     }
 
-    public void testClient() {
-        System.out.println("Tutaj 2");
-        String postJsonSampleShawnMendesServer = sampleShawnMendesServerClient.makePostRequest();
-        if(postJsonSampleShawnMendesServer != null) {
-            SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(postJsonSampleShawnMendesServer);
+    public void testClient() throws JsonProcessingException {
+        String postRequest = sampleShawnMendesServerClient.makePostRequest() ;
+        if(postRequest != null) {
+            SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(postRequest);
             System.out.println(sampleServerShawnMendesResponse);
         }
         String getJsonSampleShawnMendesServer = sampleShawnMendesServerClient.makeGetRequest();
@@ -29,7 +29,7 @@ public class ShawnMendesService {
         }
         sampleShawnMendesServerClient.makeDeleteRequest("0");
         String getJsonSampleShawnMendesServer2 = sampleShawnMendesServerClient.makeGetRequest();
-        if(getJsonSampleShawnMendesServer != null) {
+        if(getJsonSampleShawnMendesServer2 != null) {
             SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(getJsonSampleShawnMendesServer2);
             System.out.println(sampleServerShawnMendesResponse);
         }
