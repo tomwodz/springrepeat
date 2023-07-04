@@ -48,9 +48,9 @@ public class SampleShawnMendesServerProxy {
                     String.class);
             return response.getBody();
         } catch (RestClientResponseException exception) {
-            System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());
+            log.info(exception.getStatusText() + " " + exception.getStatusCode().value());
         } catch (RestClientException exception) {
-            System.out.println(exception.getMessage());
+            log.info(exception.getMessage());
         }
         return null;
     }
@@ -95,9 +95,9 @@ public class SampleShawnMendesServerProxy {
                     String.class);
             return response.getBody();
         } catch (RestClientResponseException exception) {
-            System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());
+            log.info(exception.getStatusText() + " " + exception.getStatusCode().value());
         } catch (RestClientException exception) {
-            System.out.println(exception.getMessage());
+            log.info(exception.getMessage());
         }
         return null;
     }

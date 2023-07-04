@@ -1,6 +1,5 @@
 package pl.jjr.tomwodz.springrepeat;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Component;
 import pl.jjr.tomwodz.springrepeat.itunes.itunes.service.ItunesService;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.service.ShawnMendesService;
@@ -16,7 +15,7 @@ public class MainApplicationRunner {
         this.shawnMendesService = shawnMendesService;
     }
 
-    public void run() throws JsonProcessingException {
+    public void run() {
         itunesService.fetchShawnMendesSongs();
        shawnMendesService.testClient();
     }

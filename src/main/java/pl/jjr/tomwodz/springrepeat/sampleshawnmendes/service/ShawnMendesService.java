@@ -1,11 +1,13 @@
 package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy.SampleShawnMendesServerProxy;
 
 @Service
+@Log4j2
 public class ShawnMendesService {
 
 
@@ -16,22 +18,22 @@ public class ShawnMendesService {
         this.shawnMendesServiceMapper = shawnMendesServiceMapper;
     }
 
-    public void testClient() throws JsonProcessingException {
+    public void testClient() {
         String postRequest = sampleShawnMendesServerClient.makePostRequest() ;
         if(postRequest != null) {
             SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(postRequest);
-            System.out.println(sampleServerShawnMendesResponse);
+            log.info(sampleServerShawnMendesResponse);
         }
         String getJsonSampleShawnMendesServer = sampleShawnMendesServerClient.makeGetRequest();
         if(getJsonSampleShawnMendesServer != null) {
             SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(getJsonSampleShawnMendesServer);
-            System.out.println(sampleServerShawnMendesResponse);
+            log.info(sampleServerShawnMendesResponse);
         }
         sampleShawnMendesServerClient.makeDeleteRequest("0");
         String getJsonSampleShawnMendesServer2 = sampleShawnMendesServerClient.makeGetRequest();
         if(getJsonSampleShawnMendesServer2 != null) {
             SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(getJsonSampleShawnMendesServer2);
-            System.out.println(sampleServerShawnMendesResponse);
+            log.info(sampleServerShawnMendesResponse);
         }
     }
 }

@@ -1,5 +1,6 @@
 package pl.jjr.tomwodz.springrepeat.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,11 @@ public class AppConfig {
         yaml.setResources(new ClassPathResource("application.yml"));
         propertyConfigurer.setProperties(Objects.requireNonNull(yaml.getObject()));
         return propertyConfigurer;
+    }
+
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
     }
 
 }

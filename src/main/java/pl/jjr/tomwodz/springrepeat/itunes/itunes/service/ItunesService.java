@@ -1,12 +1,13 @@
 package pl.jjr.tomwodz.springrepeat.itunes.itunes.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import pl.jjr.tomwodz.springrepeat.itunes.itunes.proxy.ItunesProxy;
 import pl.jjr.tomwodz.springrepeat.itunes.itunes.proxy.ItunesResponse;
 
 
 @Service
+@Log4j2
 public class ItunesService {
     
     private final ItunesProxy ItunesClient;
@@ -18,11 +19,11 @@ public class ItunesService {
         this.itunesMapper = itunesMapper;
     }
 
-    public void fetchShawnMendesSongs() throws JsonProcessingException {
+    public void fetchShawnMendesSongs() {
     String json = ItunesClient.makeGetRequest("shawnmendes", 4);
         if(json != null){
         ItunesResponse shawnMendesResponse = itunesMapper.mapJsonToItunesResponse(json);
-        System.out.println(shawnMendesResponse);
+            log.info(shawnMendesResponse);
     }
     }
 
