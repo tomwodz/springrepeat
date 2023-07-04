@@ -95,9 +95,9 @@ public class SampleShawnMendesServerProxy {
                     String.class);
             return response.getBody();
         } catch (RestClientResponseException exception) {
-            log.info(exception.getStatusText() + " " + exception.getStatusCode().value());
+            log.error(exception.getStatusText() + " " + exception.getStatusCode().value());
         } catch (RestClientException exception) {
-            log.info(exception.getMessage());
+            log.error(exception.getMessage());
         }
         return null;
     }

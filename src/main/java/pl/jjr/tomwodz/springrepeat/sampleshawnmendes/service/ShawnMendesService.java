@@ -18,22 +18,15 @@ public class ShawnMendesService {
         this.shawnMendesServiceMapper = shawnMendesServiceMapper;
     }
 
-    public void testClient() {
-        String postRequest = sampleShawnMendesServerClient.makePostRequest() ;
-        if(postRequest != null) {
-            SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(postRequest);
-            log.info(sampleServerShawnMendesResponse);
+    public String fetchAllShawnMendesSongs(){
+        String jsonSong = sampleShawnMendesServerClient.makeGetRequest();
+        if(jsonSong == null){
+            log.error("jsonSong was null");
+            return  "";
         }
-        String getJsonSampleShawnMendesServer = sampleShawnMendesServerClient.makeGetRequest();
-        if(getJsonSampleShawnMendesServer != null) {
-            SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(getJsonSampleShawnMendesServer);
-            log.info(sampleServerShawnMendesResponse);
-        }
-        sampleShawnMendesServerClient.makeDeleteRequest("0");
-        String getJsonSampleShawnMendesServer2 = sampleShawnMendesServerClient.makeGetRequest();
-        if(getJsonSampleShawnMendesServer2 != null) {
-            SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(getJsonSampleShawnMendesServer2);
-            log.info(sampleServerShawnMendesResponse);
-        }
+        SampleServerShawnMendesResponse sampleServerShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(jsonSong);
+        log.info("ShawnMendesService fetched: " + sampleServerShawnMendesResponse);
+        return sampleServerShawnMendesResponse.message();
     }
+
 }

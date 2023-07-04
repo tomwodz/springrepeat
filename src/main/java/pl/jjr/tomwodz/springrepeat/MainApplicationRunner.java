@@ -17,6 +17,6 @@ public class MainApplicationRunner {
 
     public void run() {
         itunesService.fetchShawnMendesSongs();
-       shawnMendesService.testClient();
+       shawnMendesService.fetchAllShawnMendesSongs();
     }
 }
