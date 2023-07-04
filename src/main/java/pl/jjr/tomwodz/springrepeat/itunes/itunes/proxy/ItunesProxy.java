@@ -1,5 +1,6 @@
 package pl.jjr.tomwodz.springrepeat.itunes.itunes.proxy;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
+@Log4j2
 public class ItunesProxy {
 
     private final RestTemplate restTemplate;
@@ -41,9 +43,11 @@ public class ItunesProxy {
                     String.class);
             return response.getBody();
         } catch (RestClientResponseException exception) {
-            System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());
+            String message = exception.getStatusText() + " " + exception.getStatusCode().value();
+            log.error(message);
         } catch (RestClientException exception) {
-            System.out.println(exception.getMessage());
+            String message = exception.getMessage();
+            log.error(message);
         }
         return null;
     }

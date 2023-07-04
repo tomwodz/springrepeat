@@ -1,5 +1,6 @@
 package pl.jjr.tomwodz.springrepeat.sampleshawnmendes.proxy;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
+@Log4j2
 public class SampleShawnMendesServerProxy {
 
     private final RestTemplate restTemplate;
@@ -68,9 +70,11 @@ public class SampleShawnMendesServerProxy {
                     String.class);
             return response.getBody();
         } catch (RestClientResponseException exception) {
-            System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());
+            String message = exception.getStatusText() + " " + exception.getStatusCode().value();
+            log.error(message);
         } catch (RestClientException exception) {
-            System.out.println(exception.getMessage());
+            String message = exception.getMessage();
+            log.error(message);
         }
         return null;
     }
