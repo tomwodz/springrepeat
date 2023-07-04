@@ -1,22 +1,25 @@
 package pl.jjr.tomwodz.springrepeat;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 import pl.jjr.tomwodz.springrepeat.itunes.itunes.service.ItunesService;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.service.ShawnMendesService;
+import pl.jjr.tomwodz.springrepeat.songviwer.Song;
+import pl.jjr.tomwodz.springrepeat.songviwer.SongViewerService;
+
+import java.util.List;
 
 @Component
+@Log4j2
 public class MainApplicationRunner {
 
-    private final ItunesService itunesService;
-    private final ShawnMendesService shawnMendesService;
+  private final SongViewerService songViewerService;
 
-    MainApplicationRunner(ItunesService itunesService, ShawnMendesService shawnMendesService){
-        this.itunesService = itunesService;
-        this.shawnMendesService = shawnMendesService;
+    public MainApplicationRunner(SongViewerService songViewerService) {
+        this.songViewerService = songViewerService;
     }
-
     public void run() {
-        itunesService.fetchShawnMendesSongs();
-       shawnMendesService.fetchAllShawnMendesSongs();
+        List<Song> songs = songViewerService.viewAllSongs();
+        log.info(songs);
     }
 }

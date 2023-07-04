@@ -22,14 +22,14 @@ public class ItunesService {
         ItunesClient = itunesClient;
         this.itunesMapper = itunesMapper;
     }
-    public List<ItunesResult> fetchShawnMendesSongs() {
-    String jsonSongs = ItunesClient.makeGetRequest("shawnmendes", 4);
+    public List<ItunesResult> fetchShawnMendesSongsFromItunes() {
+    String jsonSongs = ItunesClient.makeGetRequest("shawnmendes", 2);
         if(jsonSongs == null) {
             log.error("jsonSongs was null");
             return Collections.emptyList();
         }
         ItunesResponse shawnMendesResponse = itunesMapper.mapJsonToItunesResponse(jsonSongs);
-            log.info("ItunesService fetch:" + shawnMendesResponse);
+            log.info("ItunesService fetched:" + shawnMendesResponse);
             return shawnMendesResponse.results();
     }
 
