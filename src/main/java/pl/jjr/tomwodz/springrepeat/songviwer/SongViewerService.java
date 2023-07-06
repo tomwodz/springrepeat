@@ -1,13 +1,11 @@
 package pl.jjr.tomwodz.springrepeat.songviwer;
 
 import org.springframework.stereotype.Service;
-import pl.jjr.tomwodz.springrepeat.itunes.itunes.proxy.ItunesResult;
 import pl.jjr.tomwodz.springrepeat.itunes.itunes.service.ItunesService;
 import pl.jjr.tomwodz.springrepeat.sampleshawnmendes.service.ShawnMendesService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class SongViewerService {
@@ -22,13 +20,11 @@ public class SongViewerService {
     }
 
     public List<Song> viewAllSongs() {
+        List<Song> itunesResults = itunesService.fetchAllSongs();
+        List<Song> songs = shawnMendesService.fetchAllSongs();
         List<Song> songsToView = new ArrayList<>();
-        List<ItunesResult> itunesResults = itunesService.fetchShawnMendesSongsFromItunes();
-        String songs = shawnMendesService.fetchAllShawnMendesSongsFromLocalhost();
-        itunesResults.forEach(
-                itunesResult -> songsToView.add(new Song(itunesResult.trackName()))
-        );
-        songsToView.add(new Song(songs));
+        songsToView.addAll(itunesResults);
+        songsToView.addAll(songs);
         return songsToView;
     }
 }
