@@ -1,17 +1,23 @@
 package pl.jjr.tomwodz.springrepeat;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.event.EventListener;
 
-
-@ComponentScan
+@SpringBootApplication
 public class ResttemplateApplication {
 
+    @Autowired
+    MainApplicationRunner runner;
+
     public static void main(String[] args)  {
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(
-                ResttemplateApplication.class);
-        MainApplicationRunner runner = annotationConfigApplicationContext.getBean(MainApplicationRunner.class);
-        runner.run();
+        SpringApplication.run(ResttemplateApplication.class, args);
+    }
+    @EventListener(ApplicationStartedEvent.class)
+    public void start(){
+        runner.start();
     }
 
 }

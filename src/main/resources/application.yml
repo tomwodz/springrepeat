@@ -8,3 +8,6 @@ sample-shawn-mendes-server:
     url: localhost
     port: 8080
 
+server:
+  port: 8081
+
